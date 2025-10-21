@@ -19,13 +19,25 @@ const previewController = {
     findByFilter: async (req, res) => {
         try {
             // if ...
-            const genreSelected = req.query.genre;
-            const previews = await Preview.findAll({
-                where: {
-                    label: genreSelected
-                },
-                include: ["listGenres"]
-            });
+            const { genre, date } = req.query;
+            if (genre) {
+                const previews = await Preview.findAll({
+                    include: [{
+                        model: Genre,
+                        as: "listGenres",
+                        where: {
+                            label: genre
+                        }
+                    }]
+                });
+            }
+
+            if (date) {
+                const previews = await Preview.findAll({
+                    order: [date, 'DESC']
+                    })
+                };
+
             res.json(previews);
         } catch (error) {
             console.error("Erreur lors de la recherche des extraits filtrés : ", error);
