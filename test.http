@@ -38,3 +38,15 @@ DELETE http://localhost:3000/api/admin/genre/3
 Content-Type: application/json
 
 
+### Modification d'une entreprise
+PATCH http://localhost:3000/api/company/4
+Content-Type: application/json
+
+{
+    "name": "Entreprise modifiée"
+}
+
+### Suppression d'une entreprise
+DELETE http://localhost:3000/api/company/1
+Content-Type: application/json
+
