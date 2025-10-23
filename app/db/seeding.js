@@ -32,19 +32,24 @@ try {
         siret: "42345678912345",
         localisation: "Bordeaux",
     });
+    
+
 
     await Preview.create({
         title: "Extrait 1",
         isStar: false,
+        date: new Date("2025-01-01")
     }),
-        await Preview.create({
-            title: "Extrait 2",
-            isStar: false,
-        }),
-        await Preview.create({
-            title: "Extrait 3",
-            isStar: true,
-        });
+    await Preview.create({
+        title: "Extrait 2",
+        isStar: false,
+        date: new Date("2025-03-03")
+    }),
+    await Preview.create({
+        title: "Extrait 3",
+        isStar: true,
+        date: new Date("2025-05-05")
+    })
 
     // messages-contact
     await MessageContact.create({
@@ -101,10 +106,47 @@ try {
             "2457 Boulevard de la Compatibilité Internavigateurs 38000 Code-sur-Loire ",
     });
 
+
+    // Description-portfolio
+    await Description.create({
+        title: 'Title1',
+        image_link: 'Image1',
+        text: 'Text1'
+    });
+    await Description.create({
+        title: 'Title2',
+        image_link: 'Image2',
+        text: 'Text1'
+    });
+    await Description.create({
+        title: 'Title3',
+        image_link: 'Image3',
+        text: 'Text3'
+    });
+
+
+    await Genre.create({
+        label: "classique"
+    });
+    await Genre.create({
+        label: "rock"
+    });
+    await Genre.create({
+        label: "jazz"
+    });
+
     const users = await User.findAll();
     const companies = await Company.findAll();
+    const genres = await Genre.findAll();
+    const previews = await Preview.findAll();
+  
     await companies[0].addListUsers([users[0]]);
     await companies[1].addListUsers([users[1]]);
+  
+    await previews[0].addListGenres([genres[0], genres[2]]);
+    await previews[1].addListGenres([genres[1], genres[2]]);
+    await previews[2].addListGenres([genres[0]]);
+
 } catch (error) {
     console.error(error);
 }
