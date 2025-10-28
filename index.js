@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
     cors({
-        origin: "*", // Adresse du frontend // A MODIFIER
+        origin: "http://localhost:5173",
         credentials: true, // Autorise lʼenvoi automatique des cookies
     })
 );
