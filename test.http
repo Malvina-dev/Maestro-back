@@ -129,7 +129,7 @@ GET http://localhost:3000/api/admin/project/
 Content-Type: application/json
 
 ### trier les projets par statuts
-GET http://localhost:3000/api/admin/project/filter?status=en attente d'acceptatio
+GET http://localhost:3000/api/admin/project/filter?status=en cours
 Content-Type: application/json
 
 ### modifier le statut
