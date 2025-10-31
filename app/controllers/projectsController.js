@@ -90,9 +90,12 @@ const projectsController = {
     // Voir la liste de ses projets
     listProjects: async (req, res) => {
         try {
-            const projects = await Projet.findAll();
+            const projects = await Projet.findAll({ where: { user_id : req.user.id } });
+
+            // on récupère toutes les valeurs de status du projet
+            const Liststatus = Projet.getAttributes().status.values;
             if (projects.length > 0) {
-                res.json(projects);
+                res.json({projects,Liststatus});
             } else {
                 res.status(404).json({ message: "Aucun projet trouvé" });
             }
@@ -109,9 +112,11 @@ const projectsController = {
             return res.status(400).json({ message: "Paramètre de statut requis" });
         }
         try {
+            // penser a filtrer aussi avec le user
             const projects = await Projet.findAll({ where: { status } });
+
             if (projects.length > 0) {
-                res.json(projects);
+                res.json({projects});
             } else {
                 res.status(404).json({message: "Aucun projet trouvé avec ce statut",});
             }
