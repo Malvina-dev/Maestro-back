@@ -102,20 +102,20 @@ try {
 
     // Description-portfolio
     await Description.create({
-        title: "Présentation du Compositeur",
-        image_link: "https://media.cdnws.com/_i/101847/11698/362/0/partition-musique-motif-thermocollant.jpeg",
-        text:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        title: "Title1",
+        image_link: "Image1",
+        text: "Text1"
     });
-    await Description.create({
+/*     await Description.create({
         title: "Title2",
         image_link: "Image2",
-        text: "Text1",
-    });
-    await Description.create({
+        text: "Text2",
+    }); */
+/*     await Description.create({
         title: "Title3",
         image_link: "Image3",
         text: "Text3",
-    });
+    }); */
 
     await Genre.create({
         label: "classique",
