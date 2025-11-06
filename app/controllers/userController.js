@@ -221,15 +221,17 @@ const userController = {
     // Voir un seul utilisateur
     findByPk: async (req, res) => {
         try {
-            const user = await User.findByPk(req.params.idUser);
-            if (user) {
-                res.json(user());
-            } else {
-                return res.status(401).json({
-                    status: 401,
-                    message: "Aucun utilisateur trouvé",
-                });
+            const user = await User.findByPk(req.params.id);
+            if (!user) {
+                return res
+                    .status(404)
+                    .json({ message: "Utilisateur introuvable" });
             }
+            console.log(user);
+            return res.json({
+                message: "Profil récupéré",
+                user: user,
+            });
         } catch (error) {
             console.error(
                 "Erreur lors de la recherche d'un utilisateur",
