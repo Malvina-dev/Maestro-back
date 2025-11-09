@@ -25,6 +25,8 @@ app.use(
     })
 );
 
+app.use('/imageUploads', express.static('app/imageUploads'));
+
 app.use(router);
 
 // Route racine
