@@ -103,10 +103,10 @@ try {
 
     // Description-portfolio
     await Description.create({
-        title: "Title1",
-        image_link: "Image1",
-        text:"Text3",
-    });
+        title: "Présentation du compositeur",
+        image_link: "app/imageUploads/partition-de-musique-1.jpg-1762781750253-26379106",
+        text:"Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos. Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+    });  
 /*     await Description.create({
         title: "présentation",
         image_link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6jVN7KLjsVPlWIUVvI3CC9Vn3aXsVFt0llA&s",
