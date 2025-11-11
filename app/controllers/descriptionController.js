@@ -62,7 +62,7 @@ const descriptionController = {
                     .status(404)
                     .json({ message: "Description non trouvée" });
             }
-            // Si une nouvelle image est uploadée, ajoute le chemin/nom du fichier dans datas
+            // Si une nouvelle image est uploadée, ajoute le chemin/nom du fichier 
             if (req.file) {
                 const link = `${req.file.destination}${req.file.filename}`;
                 datas.image_link = link;
