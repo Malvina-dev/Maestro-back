@@ -42,6 +42,6 @@ userRoute.get("/admin/user/filter", userController.sort);
 
 // Voir un seul utilisateur
 // GET/api/admin/user/:idUser
-userRoute.get("/admin/user/:idUser", userController.findByPk);
+userRoute.get("/admin/user/:id", userController.findByPk);
 
 export default userRoute;
