@@ -77,6 +77,11 @@ Content-Type: application/json
 ### lister les user
 GET http://localhost:3000/api/admin/user
 Content-Type: application/json
+
+### Récuperer 1 user
+GET http://localhost:3000/api/admin/user/2
+Content-Type: application/json
+
 ### Récupérer les messages
 GET http://localhost:3000/api/message-contact
 Content-Type: application/json
