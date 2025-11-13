@@ -25,6 +25,8 @@ app.use(
     })
 );
 
+app.use('/uploads', express.static('uploads'));
+
 app.use(router);
 
 // Route racine
