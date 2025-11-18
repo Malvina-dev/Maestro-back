@@ -1,9 +1,13 @@
-// ==========================================================
-// 🌍 Importation des modules nécessaires
-// ==========================================================
-import * as dotenv from "dotenv";  // Charge les variables d'environnement depuis le fichier .env
-import express from "express";      // Importe le framework Express pour créer le serveur web
-import sequelize from "./app/db/database.js"; // Importe la connexion à la base de données Sequelize
+import * as dotenv from "dotenv";
+import express from "express";
+import sequelize from "./app/db/database.js";
+import Description from "./app/models/descriptionModel.js";
+import MessageContact from "./app/models/messageContactModel.js";
+import { User, Projet, Company, Preview, Genre } from "./app/models/index.js";
+import router from "./app/routers/router.js";
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import jwt from "jsonwebtoken";
 
 // ==========================================================
 // ⚙️ Configuration de dotenv
@@ -16,36 +20,40 @@ dotenv.config();  // Permet d'accéder aux variables définies dans .env via pro
 const app = express();                // Crée une application Express
 const port = process.env.PORT || 3000; // Définit le port (priorité à la variable .env, sinon 3000)
 
-// ==========================================================
-// 🧠 Fonction principale : connexion à la base + lancement du serveur
-// ==========================================================
+// Permet de décoder le corps au format JSON de la requête HTTP
+app.use(express.json());
+
+app.use(cookieParser());
+app.use(
+    cors({
+        origin: "http://localhost:5173",
+        credentials: true, // Autorise lʼenvoi automatique des cookies
+    })
+);
+
+app.use('/imagesUploads', express.static('app/imageUploads'));
+
+app.use('/uploads', express.static('uploads'));
+
+app.use(router);
+
+// Route racine
+app.get("/", (req, res) => {
+    res.send("Bienvenue sur l'API Maestro !");
+});
+
+// Connexion à la base et lancement du serveur
 async function main() {
     try {
-        // 🔌 Test de connexion à la base de données
-        await sequelize.authenticate(); 
+        await sequelize.authenticate();
         console.log("✅ Connexion à la base réussie");
 
-        // 🌐 Lancement du serveur HTTP une fois la base connectée
         app.listen(port, () => {
             console.log(`🚀 Serveur lancé sur http://localhost:${port}`);
         });
     } catch (error) {
-        // ❌ Gestion des erreurs de connexion à la base
         console.error("❌ Erreur de connexion à la base :", error);
     }
 }
 
-// ==========================================================
-// 🏁 Démarrage du serveur (appel de la fonction principale)
-// ==========================================================
 main();
-
-// ==========================================================
-// 💡 Notes :
-// ----------------------------------------------------------
-// - dotenv doit être installé : npm install dotenv
-// - sequelize doit être configuré dans ./app/db/database.js
-// - si tu veux tester rapidement ton serveur :
-//     ajoute une route Express simple avant la fonction main()
-//       ex. : app.get("/", (req, res) => res.send("Bienvenue sur Maestro-back !"));
-// ==========================================================
