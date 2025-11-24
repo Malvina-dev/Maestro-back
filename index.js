@@ -31,7 +31,7 @@ app.use(
     })
 );
 
-app.use('/imagesUploads', express.static('app/imageUploads'));
+app.use('/imagesUploads', express.static('imageUploads'));
 
 app.use('/uploads', express.static('uploads'));
 
