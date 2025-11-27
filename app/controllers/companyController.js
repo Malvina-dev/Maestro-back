@@ -22,7 +22,6 @@ const companyController = {
     companyProfile: async (req, res) => {
         try {
             const user = await User.findByPk(req.user.id);
-            console.log("companyControlleur log", user.company_id);
             const company = await Company.findByPk(user.company_id);
             if (!company) {
                 return res
@@ -54,24 +53,24 @@ const companyController = {
             };
 
             // TEST SANITIZE:
-            console.log(
-                "Avant : ",
-                req.body.name,
-                req.body.siret,
-                req.body.localisation
-            );
-            console.log(
-                "Apres : ",
-                cleanDatas.name,
-                cleanDatas.siret,
-                cleanDatas.localisation
-            );
+            // console.log(
+            //     "Avant : ",
+            //     req.body.name,
+            //     req.body.siret,
+            //     req.body.localisation
+            // );
+            // console.log(
+            //     "Apres : ",
+            //     cleanDatas.name,
+            //     cleanDatas.siret,
+            //     cleanDatas.localisation
+            // );
 
-            // console.log(datas);
+
             const newCompany = await Company.create(cleanDatas);
             await newCompany.addListUsers([user]);
 
-            console.log(req.body);
+
             res.status(201).json(newCompany);
         } catch (error) {
             console.error(
@@ -85,7 +84,6 @@ const companyController = {
     // PATCH /api/company/:id
     update: async (req, res) => {
         try {
-            console.log(req.body);
             const datas = req.body;
             const user = await User.findByPk(req.user.id);
             console.log("companyControlleur log", user.company_id);
@@ -109,7 +107,6 @@ const companyController = {
     delete: async (req, res) => {
         try {
             const id = req.params.id;
-            console.log(id);
             const company = await Company.findByPk(id);
             if (!company) {
                 return res

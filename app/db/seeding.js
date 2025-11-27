@@ -103,28 +103,6 @@ try {
         localisation: "Nancy",
     });
 
-    // Tests seeding pour les previews
-    // await Preview.create({
-    //     title: "Extrait 1",
-    //     isStar: false,
-    //     date: new Date("2025-01-01"),
-    // }),
-    //     await Preview.create({
-    //         title: "Extrait 2",
-    //         isStar: false,
-    //         date: new Date("2025-03-03"),
-    //     }),
-    //     await Preview.create({
-    //         title: "Extrait 3",
-    //         isStar: true,
-    //         date: new Date("2025-05-05"),
-    //     }),
-        // await Preview.create({
-        //     title: "Extrait à supprimer",
-        //     isStar: true,
-        //     date: new Date("2025-06-06"),
-        //     link: "uploads/RAYE - WHERE IS MY HUSBAND! (Official Music Video).mp3-1761222883667-884693652"
-        // })
 
         // messages-contact
         await MessageContact.create({
@@ -484,12 +462,7 @@ try {
         number : 2,
         text:"Je propose un accompagnement musical personnalisé, que vous soyez un professionnel ou un particulier. Pour les projets audiovisuels – films, jeux vidéo, publicités ou podcasts – je compose des musiques originales et adaptées à chaque univers. J’imagine également des identités sonores pour les marques, entreprises et créateurs de contenu. Pour les particuliers, je réalise des compositions uniques pour des moments forts : mariage, anniversaire, naissance ou hommage. Vous pouvez aussi faire appel à moi pour créer une chanson personnalisée, pensée spécialement pour une personne ou un événement. J’assure la création d’ambiances, de thèmes musicaux et d’arrangements sur mesure. Je peux retravailler ou réorchestrer une œuvre existante afin de lui donner une nouvelle vie. Le mixage et la finition audio font partie de mes prestations pour garantir un rendu professionnel. Chaque projet est construit en dialogue avec vous, pour coller à votre émotion, votre message ou votre identité. Mon ambition : transformer vos idées en musique et faire de chaque son un souvenir marquant",
     });  
-/*      await Description.create({
-        title: "Title3",
-        image_link: "/app/imagesUploads/",
-        number : 1,
-        text: "Text3",
-    });   */
+
 
     await Genre.create({
         label: "classique",
@@ -538,8 +511,6 @@ try {
     const genres = await Genre.findAll();
     const previews = await Preview.findAll();
 
-    // await companies[0].addListUsers([users[0]]);
-    // await companies[1].addListUsers([users[1]]);
 
     const mapping = [
         [0, 0],
@@ -560,12 +531,10 @@ try {
     ];
 
     for (const [ci, ui] of mapping) {
-        await companies[ci].addListUsers([users[ui]]); // Company.hasMany(User, { as: "listUsers" })
+        await companies[ci].addListUsers([users[ui]]); 
     }
 
-    // await previews[0].addListGenres([genres[0], genres[2]]);
-    // await previews[1].addListGenres([genres[1], genres[2]]);
-    // await previews[2].addListGenres([genres[0]]);
+
 } catch (error) {
     console.error(error);
 }

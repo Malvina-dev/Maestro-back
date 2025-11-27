@@ -37,8 +37,6 @@ const descriptionController = {
                 const link = `${req.file.destination}${req.file.filename}`;
                 datas.image_link = link;
             }
-
-            console.log(datas);
             const newDescription = await Description.create(datas);
             res.status(201).json(newDescription);
         } catch (error) {

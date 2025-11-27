@@ -16,7 +16,7 @@ messageContactRoute.patch('/message-contact/:id', messageContactController.updat
 
 
 // DELETE /api/genre/:idMessageContact
-messageContactRoute.delete('/message-contact/:id', messageContactController.deleteMessage)
+messageContactRoute.delete('/message-contact/:id', messageContactController.deleteMessage);
 
 
 

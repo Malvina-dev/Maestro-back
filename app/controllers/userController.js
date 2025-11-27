@@ -10,7 +10,6 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const userController = {
     // Créer un nouvel utilisateur
     create: async (req, res) => {
-        console.log(req.body);
         try {
             // récupération du mail & password par le front
             const { email, password } = req.body;
@@ -44,7 +43,6 @@ const userController = {
 
     // Connexion
     login: async (req, res) => {
-        console.log(req.body);
         try {
             const loginDatas = req.body;
             const { email, password } = loginDatas;
@@ -181,7 +179,6 @@ const userController = {
 
     // Modifier les informations de l'utilisateur
     modify: async (req, res) => {
-        console.log(req.body);
 
         try {
             const user = await User.findByPk(req.user.id);
@@ -219,7 +216,6 @@ const userController = {
             }
 
             const modifieIsActive = req.body;
-            console.log("req.body : ", req.body);
             const { isActive } = modifieIsActive;
 
             await user.update({
@@ -276,7 +272,6 @@ const userController = {
                     .status(400)
                     .json({ message: "Utilisateur introuvable" });
             }
-            console.log(user);
             return res.json({
                 message: "Profil récupéré",
                 user: user,

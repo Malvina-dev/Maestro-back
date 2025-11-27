@@ -26,13 +26,9 @@ const messageContact = {
 
         // POST /api/message-contact/
         create: async (req, res) => {
-            console.log(req.body);
-            
             try {
                 const datas = req.body;
-                console.log(datas);
                 const newMessageContact = await MessageContact.create(datas);
-                console.log(req.body);
                 res.status(201).json(newMessageContact);
             } catch (error) {
                 console.error("Erreur lors de la création d'un message' : ", error);

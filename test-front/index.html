@@ -36,15 +36,13 @@
             });
             const data = await res.json();
         });
-        // const p = document.getElementById("p");
-        // p.textContent = JSON.stringify(data, null, 2);
+
 
         const imageForm = document.getElementById("descriptionForm");
 
         imageForm.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            console.log("submit image");
 
             const formData = new FormData(imageForm);
 
