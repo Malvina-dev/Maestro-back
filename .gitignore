@@ -2,14 +2,14 @@ node_modules
 .env
 uploads/*
 !uploads/.gitkeep
-!uploads/Blusy.mp3
-!uploads/Kikou.mp3
-!uploads/Les-Paul.mp3
-!uploads/Night-Games.mp3
-!uploads/Vertu.mp3
+!uploads/musique1.mp3
+!uploads/musique2.mp3
+!uploads/musique3.mp3
+!uploads/musique4.mp3
+!uploads/musique5.mp3
 
 imageUploads/*
 !imageUploads/.gitkeep
-!imageUploads/akbar-nemati-CHMOlQEJUbk-unsplash.jpg
-!imageUploads/techivation-I4IgWUTOSGI-unsplash.jpg
+!imageUploads/description.jpg
+!imageUploads/presentation.jpg
 
